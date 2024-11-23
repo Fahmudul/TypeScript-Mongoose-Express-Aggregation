@@ -73,14 +73,22 @@ const getAllBooks = async (req: Request, res: Response) => {
 const getSpecificBook = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
+    console.log(productId);
     const specificBook =
       await BookServices.getSpecificBookFromDatabase(productId);
-
-    res.status(200).json({
-      message: 'Book retrieved successfully',
-      status: true,
-      data: specificBook,
-    });
+    console.log(specificBook);
+    if (!specificBook) {
+      res.status(404).json({
+        message: 'Book not found',
+        status: false,
+      });
+    } else {
+      res.status(200).json({
+        message: 'Book retrieved successfully',
+        status: true,
+        data: specificBook,
+      });
+    }
   } catch (error: any) {
     res.status(500).json({
       message: 'Failed to retrieve book',
@@ -93,21 +101,24 @@ const getSpecificBook = async (req: Request, res: Response) => {
 // Update book data
 const updateBookData = async (req: Request, res: Response) => {
   const { productId } = req.params;
-<<<<<<< HEAD
-  const bookData  = req.body;
-=======
-  const { bookData } = req.body;
->>>>>>> 6c04bf6a727160ce409ae76ce4fdbc0de209911a
+  const bookData = req.body;
   try {
     const updatedBookData = await BookServices.updateExistingBookData(
       productId,
       bookData,
     );
-    res.status(200).json({
-      message: 'Book updated successfully',
-      status: true,
-      data: updatedBookData,
-    });
+    if (!updatedBookData) {
+      res.status(404).json({
+        message: 'Book not found',
+        status: false,
+      });
+    } else {
+      res.status(200).json({
+        message: 'Book updated successfully',
+        status: true,
+        data: updatedBookData,
+      });
+    }
   } catch (error: any) {
     res.status(500).json({
       message: 'Failed to update book',
@@ -121,12 +132,21 @@ const updateBookData = async (req: Request, res: Response) => {
 const deleteBook = async (req: Request, res: Response) => {
   const { productId } = req.params;
   try {
-    const deletedBook = await BookServices.deleteABookFromDatabase(productId);
-    res.status(200).json({
-      message: 'Book deleted successfully',
-      status: true,
-      data: deletedBook,
-    });
+    const ifExistBook =
+      await BookServices.getSpecificBookFromDatabase(productId);
+    if (!ifExistBook) {
+      res.status(404).json({
+        message: 'Book not found',
+        status: false,
+      });
+    } else {
+      const deletedBook = await BookServices.deleteABookFromDatabase(productId);
+      res.status(200).json({
+        message: 'Book deleted successfully',
+        status: true,
+        data: deletedBook,
+      });
+    }
   } catch (error: any) {
     res.status(500).json({
       message: 'Failed to delete book',
@@ -201,11 +221,7 @@ const getAllBooksRevenue = async (req: Request, res: Response) => {
     });
   }
 };
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 6c04bf6a727160ce409ae76ce4fdbc0de209911a
 export const StoreController = {
   createBook,
   getAllBooks,

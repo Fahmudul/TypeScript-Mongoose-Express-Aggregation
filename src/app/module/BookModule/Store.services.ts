@@ -35,15 +35,22 @@ const getAllBooksFromDatabase = async () => {
 
 // Get specific book from database
 const getSpecificBookFromDatabase = async (id: string) => {
-  const foundedBook = await BookModel.findById(id);
+  const foundedBook = await BookModel.findOne({_id:id});
+  if (!foundedBook) {
+    return false;
+  }
   return foundedBook;
 };
 
 // Update book data and save to database
 const updateExistingBookData = async (id: string, bookData: Book) => {
-  await BookModel.findByIdAndUpdate(id, bookData);
-  const newUpdatedBook = await BookModel.findById(id);
-  return newUpdatedBook;
+  const isExistingBook = await BookModel.findById(id);
+  if (!isExistingBook) return false;
+  else {
+    await BookModel.findByIdAndUpdate(id, bookData);
+    const newUpdatedBook = await BookModel.findById(id);
+    return newUpdatedBook;
+  }
 };
 
 // Delete book from database
