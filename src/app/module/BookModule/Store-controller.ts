@@ -4,7 +4,7 @@ import ZodOrderSchema from './Order.zodvalidation';
 import { BookServices } from './Store.services';
 const createBook = async (req: Request, res: Response) => {
   try {
-    const { bookData } = req.body;
+    const bookData = req.body;
     // Book data validation using Zod
     const testedBookData = ZodBookSchema.parse(bookData);
 
