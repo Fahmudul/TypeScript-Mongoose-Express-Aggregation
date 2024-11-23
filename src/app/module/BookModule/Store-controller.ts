@@ -93,7 +93,7 @@ const getSpecificBook = async (req: Request, res: Response) => {
 // Update book data
 const updateBookData = async (req: Request, res: Response) => {
   const { productId } = req.params;
-  const { bookData } = req.body;
+  const bookData  = req.body;
   try {
     const updatedBookData = await BookServices.updateExistingBookData(
       productId,
@@ -197,6 +197,8 @@ const getAllBooksRevenue = async (req: Request, res: Response) => {
     });
   }
 };
+
+
 export const StoreController = {
   createBook,
   getAllBooks,
