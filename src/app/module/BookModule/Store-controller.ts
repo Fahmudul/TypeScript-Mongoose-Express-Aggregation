@@ -93,7 +93,11 @@ const getSpecificBook = async (req: Request, res: Response) => {
 // Update book data
 const updateBookData = async (req: Request, res: Response) => {
   const { productId } = req.params;
+<<<<<<< HEAD
   const bookData  = req.body;
+=======
+  const { bookData } = req.body;
+>>>>>>> 6c04bf6a727160ce409ae76ce4fdbc0de209911a
   try {
     const updatedBookData = await BookServices.updateExistingBookData(
       productId,
@@ -197,8 +201,11 @@ const getAllBooksRevenue = async (req: Request, res: Response) => {
     });
   }
 };
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 6c04bf6a727160ce409ae76ce4fdbc0de209911a
 export const StoreController = {
   createBook,
   getAllBooks,
