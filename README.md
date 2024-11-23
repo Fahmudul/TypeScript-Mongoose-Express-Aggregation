@@ -1,5 +1,5 @@
 ```markdown
-# 📚 Book Shop API (B4A2V1)
+# 📚 Book Shop API 
 
 An Express-based Book Shop API built with TypeScript, integrating MongoDB through Mongoose for seamless database management. This project includes robust data validation using **Zod** and offers features like product management, order handling, and revenue calculation.
 
@@ -164,8 +164,7 @@ An Express-based Book Shop API built with TypeScript, integrating MongoDB throug
 
 ## 🌐 Deployment
 
-- **Live Link**: [Insert your deployed link here]
-- **GitHub Repository**: [Insert your repository link here]
+- **Live Link**: [https://book-store-smoky-five.vercel.app]
 
 ---
 
@@ -198,7 +197,7 @@ An Express-based Book Shop API built with TypeScript, integrating MongoDB throug
 
 ## 🎥 Video Explanation
 
-- [Insert your video link here]
+- Click here [https://drive.google.com/file/d/1XTjGQbzAD7PnldgQQ2gWPrOqtbyIVatn/view?usp=sharing]
 
 ---
 
@@ -206,11 +205,4 @@ An Express-based Book Shop API built with TypeScript, integrating MongoDB throug
 
 - **Fahmudul Hassan Siam**  
   
-  
 
----
-
-## 📖 License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
-```
